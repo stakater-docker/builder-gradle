@@ -29,11 +29,15 @@ VOLUME /home/gradle/.gradle
 
 WORKDIR /home/gradle
 
-# Setting Gradle Version that needs to be installed
-ENV GRADLE_VERSION 3.5
-
+# Set Gradle version to 3.4.1 or 3.5(commented below),
+ENV GRADLE_VERSION 3.4.1
 # Download and Install Gradle 
-ARG GRADLE_DOWNLOAD_SHA256=0b7450798c190ff76b9f9a3d02e18b33d94553f708ebc08ebe09bdf99111d110
+ARG GRADLE_DOWNLOAD_SHA256=db1db193d479cc1202be843f17e4526660cfb0b21b57d62f3a87f88c878af9b2
+
+# Uncomment below 2 lines to set Gradle version 3.5
+# ENV GRADLE_VERSION 3.5
+#ARG GRADLE_DOWNLOAD_SHA256=0b7450798c190ff76b9f9a3d02e18b33d94553f708ebc08ebe09bdf99111d110
+
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
